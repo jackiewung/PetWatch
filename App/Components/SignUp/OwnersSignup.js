@@ -10,17 +10,17 @@ var {
 } = React;
 
 
-class SittersSignup extends React.Component{
+class OwnerSignup extends React.Component{
   render(){
     return (
       <View>
-        <Text>Inside Sitters</Text>
+        <Text>Inside Owners</Text>
       </View>
     );
   }
 }
 
-module.exports = SittersSignup;
+module.exports = OwnerSignup;
 
 
 

@@ -1,4 +1,6 @@
 var React = require('react-native');
+var OwnerForm = require('./SittersSignup');
+var SitterForm = require('./OwnersSignup');
 
 var {
   Text,
@@ -37,20 +39,60 @@ var styles = StyleSheet.create({
 });
 
 class Signup extends React.Component{
+
+  constructor(props){
+    super(props)
+    this.state = {
+      sitterOnClick: false,
+      ownerOnClick: false
+    }
+  }
+
+  handleSubmit(button){
+    console.log("here", button);
+    if('sitter' === button){
+      this.setState({
+        sitterOnClick: true,
+        ownerOnClick: false
+      })
+    } else if ('owner' === button) {
+      this.setState({
+        sitterOnClick: false,
+        ownerOnClick: true
+      })    
+    }
+  }
+
   render() {
+
+    var showSitter = (
+      this.state.sitterOnClick ? <SitterForm /> : <View></View>
+    );
+
+    var showOwner = (
+      this.state.ownerOnClick ? <OwnerForm /> : <View></View>
+    );
+
     return (
       <View style={styles.container}>
         <Text style={styles.main}>Sign Up</Text>
 
-      <TouchableHighlight style={styles.button}
-        underlayColor='transparent'>
-        <Text style={styles.buttonText}>SITTER SIGN UP</Text>
-      </TouchableHighlight>
+        <TouchableHighlight 
+          style={styles.button}
+          onPress={this.handleSubmit.bind(this, 'sitter')}
+          underlayColor='transparent'>
+          <Text style={styles.buttonText}>SITTER SIGN UP</Text>
+        </TouchableHighlight>
 
-      <TouchableHighlight style={styles.button}
-        underlayColor='transparent'>
-        <Text style={styles.buttonText}>OWNER SIGN UP</Text>
-      </TouchableHighlight>
+        <TouchableHighlight 
+          style={styles.button}
+          onPress={this.handleSubmit.bind(this, 'owner')}
+          underlayColor='transparent'>
+          <Text style={styles.buttonText}>OWNER SIGN UP</Text>
+        </TouchableHighlight>
+
+        {showSitter}
+        {showOwner}
 
       </View>
     );
@@ -58,42 +100,3 @@ class Signup extends React.Component{
 }
 
 module.exports = Signup;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
