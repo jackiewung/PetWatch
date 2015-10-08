@@ -1,4 +1,6 @@
 var React = require('react-native');
+var OwnerForm = require('./SittersSignup');
+var SitterForm = require('./OwnersSignup');
 
 var {
   Text,
@@ -64,11 +66,11 @@ class Signup extends React.Component{
   render() {
 
     var showSitter = (
-      this.state.sitterOnClick ? <Text>Sitter</Text> : <View></View>
+      this.state.sitterOnClick ? <SitterForm /> : <View></View>
     );
 
     var showOwner = (
-      this.state.ownerOnClick ? <Text>owner</Text> : <View></View>
+      this.state.ownerOnClick ? <OwnerForm /> : <View></View>
     );
 
     return (
