@@ -52,20 +52,24 @@ var TabBar = React.createClass({
 
   getInitialState: function() {
     return {
-      selectedTab: 'main'
+      selectedTab: 'Owners'
     }
   },
 
   render: function() {
     return (
-      <TabBarIOS selectedTab={this.state.selectedTab}>
+      <TabBarIOS 
+        barTintColor='black'
+        tintColor='white'
+        selectedTab={this.state.selectedTab}>
 
         <TabBarIOS.Item
-          selected={this.state.selectedTab === 'main'}
+          selected={this.state.selectedTab === 'Owners'}
+          icon={require('image!egghead')}
           title='Owners'
           onPress={() => {
             this.setState({
-              selectedTab: 'main'
+              selectedTab: 'Owners'
             });
           }}>
           <Owners/>

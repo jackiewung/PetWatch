@@ -61,15 +61,17 @@ var styles = StyleSheet.create({
 var SignUp = React.createClass({
   getInitialState: function() {
     return {
-      username: '',
+      email: '',
+      name: '',
       password: ''
     }
   },
   
-  userInput: function(event) {
-    this.setState({ username: event.nativeEvent.text })
+  changeState: function(event) {
+    this.setState({
+      name: event.nativeEvent.text
+    });
   },
-
 
   render: function() {
     return (
@@ -79,17 +81,20 @@ var SignUp = React.createClass({
 
       <TextInput style={styles.input} 
         placeholder='Full Name'
-        placeholderTextColor='white'>
+        placeholderTextColor='white'
+        onChange={this.changeState.bind(this,'name')}>
       </TextInput>
 
       <TextInput style={styles.input} 
         placeholder='Email'
-        placeholderTextColor='white'>
+        placeholderTextColor='white'
+        onChange={this.changeState.bind(this,'email')}>
       </TextInput>
 
       <TextInput style={styles.input} 
         placeholder='Password'
-        placeholderTextColor='white'>
+        placeholderTextColor='white'
+        onChange={this.changeState.bind(this,'password')}>
       </TextInput>
 
       <Text style={styles.buttonText}></Text>
@@ -99,6 +104,11 @@ var SignUp = React.createClass({
         <Text style={styles.buttonText}>SIGN UP</Text>
       </TouchableHighlight>
 
+      <Text>
+        {this.state.name}
+        {this.state.email}
+        {this.state.password}
+      </Text>
     </View>
     )
   }
