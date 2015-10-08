@@ -1,5 +1,5 @@
 var React = require('react-native');
-var SignUp = require('./SignUp/SignUp')
+var Signup = require('./SignUp/Sign-up')
 var Sitters = require('./Sitters/Sitters')
 var Owners = require('./Owners/Owners')
 
@@ -92,7 +92,7 @@ var TabBar = React.createClass({
               selectedTab: 'false'
             });
           }}>
-          <SignUp/>
+          <Signup/>
         </TabBarIOS.Item>
 
       </TabBarIOS>
