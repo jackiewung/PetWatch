@@ -1,4 +1,7 @@
 var React = require('react-native');
+var Firebase = require('firebase');
+var helpers = require('../../Utils/helpers');
+var SitterProfile = require('./SitterProfile');
 
 var {
   View,
@@ -8,43 +11,65 @@ var {
   NavigatorIOS,
   TouchableHighlight,
   Navigator,
-  TabBarIOS
+  TabBarIOS,
+  ScrollView,
+  ListView
 } = React;
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center',
+    textAlign: 'center',
     backgroundColor: '#8d63b4'
   },
-  pet: {
-    fontSize: 23,
-    textAlign: 'center',
-    color: 'white',
-    fontWeight: 'bold'
-  },
-  watch: {
-    fontSize: 23,
-    color: 'white',
-    flexDirection: 'row',
-    paddingBottom: 10
+  main: {
+    flex: 1,
+    color: '#fff',
+    flexDirection: 'column'
   }
 });
 
 var Sitters = React.createClass({
+  getInitialState: function() {
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+    return {
+      owners: [],
+      dataBlob: {},
+      dataSource: '',
+      loaded: false
+    }
+  },
 
-  render: function() {
+  componentWillMount: function() {
+    var self = this;
+    helpers.getSitters()
+      .then((res) => {
+        self.setState({dataSource: self.ds.cloneWithRows(res)})
+      })
+  },
+
+  renderRow: function(rowData) {
     return (
       <View style={styles.container}>
+        <SitterProfile picURL={rowData.picURL} firstname={rowData.firstname}
+           lastname={rowData.lastname} description={rowData.description}
+           phone={rowData.phone} email={rowData.email} address={rowData.address}/>
+      </View>
+    )
+  },
 
-       <Text style={styles.watch}>
-         <Text style={styles.pet}>
-           Sitter
-         </Text>
-         Stuff
-       </Text>
+  render: function() {
+    console.log(this.state.dataSource)
+    var listData= this.state.dataSource === '' ?  null : (<ListView dataSource={this.state.dataSource} 
+          renderRow={this.renderRow} />)
 
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+            {listData}
+        </ScrollView>
       </View>
     )
   }

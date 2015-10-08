@@ -65,7 +65,7 @@ var TabBar = React.createClass({
 
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'Owners'}
-          icon={require('image!egghead')}
+          icon={require('image!paw')}
           title='Owners'
           onPress={() => {
             this.setState({
@@ -74,8 +74,10 @@ var TabBar = React.createClass({
           }}>
           <Owners/>
         </TabBarIOS.Item>
+
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'true'}
+          icon={require('image!dogleash')}
           title='Sitters'
           onPress={() => {
             this.setState({
@@ -84,8 +86,10 @@ var TabBar = React.createClass({
           }}>
           <Sitters/>
         </TabBarIOS.Item>
+
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'false'}
+          icon={require('image!arrow')}
           title='Sign Up'
           onPress={() => {
             this.setState({
