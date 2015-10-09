@@ -11,23 +11,26 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
+  buttons: {
+    flexDirection: 'row'
+  },
   container: {
+    marginTop: 25,
     flex: 1,
     alignItems: 'center',
     flexDirection: 'column',
-    backgroundColor: '#8d63b4'
+    backgroundColor: '#fffbf8'
   },
   main: {
-    color: '#fff',
+    color: 'black',
     flexDirection: 'row',
-    margin: 20,
-    marginTop:30
+    margin: 20
   },
   padding: {
     paddingBottom: 8
   },
   button: {
-    backgroundColor: '#725794',
+    backgroundColor: '#34495e',
     width: 125
   },
   buttonText: {
@@ -78,19 +81,23 @@ class Signup extends React.Component{
       <View style={styles.container}>
         <Text style={styles.main}>Sign Up</Text>
 
-        <TouchableHighlight 
-          style={styles.button}
-          onPress={this.handleSubmit.bind(this, 'sitter')}
-          underlayColor='transparent'>
-          <Text style={styles.buttonText}>SITTER SIGN UP</Text>
-        </TouchableHighlight>
+        <View style={styles.buttons}>
+          <TouchableHighlight 
+            style={styles.button}
+            onPress={this.handleSubmit.bind(this, 'sitter')}
+            underlayColor='transparent'>
+            <Text style={styles.buttonText}>SITTER SIGN UP</Text>
+          </TouchableHighlight>
 
-        <TouchableHighlight 
-          style={styles.button}
-          onPress={this.handleSubmit.bind(this, 'owner')}
-          underlayColor='transparent'>
-          <Text style={styles.buttonText}>OWNER SIGN UP</Text>
-        </TouchableHighlight>
+          <Text>  </Text>
+
+          <TouchableHighlight 
+            style={styles.button}
+            onPress={this.handleSubmit.bind(this, 'owner')}
+            underlayColor='transparent'>
+            <Text style={styles.buttonText}>OWNER SIGN UP</Text>
+          </TouchableHighlight>
+        </View>
 
         {showSitter}
         {showOwner}
