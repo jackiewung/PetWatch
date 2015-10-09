@@ -1,65 +1,67 @@
 var React = require('react-native');
 var Separator = require('../../Utils/Separator');
+var OwnerProfile = require('./OwnerProfile');
 
-var { View, Text, Image, StyleSheet } = React;
+var { View, Text, Image, StyleSheet, TouchableHighlight, ScrollView } = React;
 
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    paddingLeft: 15
-  },
-
-  petName: {
-    color: '#000',
-    fontSize: 20
-  },
-
-  petSpecies: {
-    paddingTop: 3,
-    color: '#666'
-  },
-
-  image: {
-    height: 75,
-    borderRadius: 37.5,
-    width: 75,
-    paddingLeft: 15
-  },
-
-  paddingText: {
+    alignItems: 'center',
     flexDirection: 'column',
-    margin: 16
+    marginTop: 40
   },
+  image: {
+    height: 350,
+    width: 350,
+    marginTop: 40
 
-  arrow: {
-    height:30,
-    width:30,
-    margin: 20,
-    position: 'absolute',
-    right: 30
+  },
+  textView: {
+    paddingTop: 15,
+    paddingLeft: 15,
+    alignItems: 'center',
+    width: 350
+  },
+  imageView: {
+    flex: 1
+  },
+  name: {
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
+  description: {
+    color: '#666',
+    alignItems: 'center'
+  },
+  padding: {
+    margin:2
   }
 });
 
-var OwnerProfile = React.createClass({
+var SitterList = React.createClass({
+
   render: function(){
+    console.log(this.props.userData, ' is userData')
     return (
-      <View>
-        <View style={styles.container}>
-          <Image source={{uri: this.props.picUrl}} style={styles.image}/>
-          
-        <View style={styles.paddingText}> 
-          <Text style={styles.petName}>{this.props.name}</Text>
-          <Text style={styles.petSpecies}>{this.props.species}</Text>
-        </View>
-        <Image source={require('image!arrowRight')} style={styles.arrow}/>
-        </View>
-          <Separator/>
+    <View style={styles.container}>
+
+
+       <Image source={{uri: this.props.userData.pets.picURL}} 
+          style={styles.image} />
+
+      <View style={styles.textView}>
+       <Text style={styles.name}>{this.props.userData.firstname} {this.props.userData.lastname}</Text>
+       <Text style={styles.description}>{this.props.userData.pets.description}</Text>
+
+       <Text style={styles.padding}>  </Text>
+
+       <Text>{this.props.userData.email}</Text>
+       <Text>{this.props.userData.phone}</Text>
       </View>
+    </View>
     )
   }
 });
 
-
-module.exports = OwnerProfile;
+module.exports = SitterList;

@@ -7,11 +7,34 @@ var { View, Text, Image, StyleSheet, TouchableHighlight, ScrollView } = React;
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection: 'column',
+    marginTop: 40
   },
   image: {
-    height:50,
-    alignSelf: 'center'
+    height: 350,
+    width: 350,
+    marginTop: 40
+
+  },
+  textView: {
+    paddingTop: 15,
+    paddingLeft: 15,
+    alignItems: 'center',
+    width: 350
+  },
+  imageView: {
+    flex: 1
+  },
+  name: {
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
+  description: {
+    color: '#666'
+  },
+  padding: {
+    margin:2
   }
 });
 
@@ -20,19 +43,26 @@ var SitterList = React.createClass({
   render: function(){
     console.log(this.props.userData, ' is userData')
     return (
-     <View style={styles.container}>
+    <View style={styles.container}>
 
-       <Image source={{uri: this.props.userData.picURL}} 
-          style={{height:50, width:450,flex:1,padding: 40}} />
-         <Text>{this.props.userData.firstname} {this.props.userData.lastname}</Text>
-         <Text>{this.props.userData.preference}</Text>
-         <Text>{this.props.userData.description}</Text>
 
-         <Text>{this.props.userData.email}</Text>
-         <Text>{this.props.userData.phone}</Text>
-         <Text>{this.props.userData.address}</Text>
+      <Image source={{uri: this.props.userData.picURL}} 
+          style={styles.image} />
 
-     </View>
+        <View style={styles.textView}> 
+       <Text style={styles.name}>{this.props.userData.firstname} {this.props.userData.lastname}</Text>
+       <Text style={styles.description}>{this.props.userData.preference}</Text>
+
+       <Text style={styles.padding}>   </Text>
+
+       <Text>{this.props.userData.description}</Text>
+
+       <Text style={styles.padding}>   </Text>
+
+       <Text>{this.props.userData.email}</Text>
+       <Text>{this.props.userData.phone}</Text>
+      </View>
+    </View>
     )
   }
 });
