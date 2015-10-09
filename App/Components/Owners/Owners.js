@@ -1,7 +1,7 @@
 var React = require('react-native');
 var Firebase = require('firebase');
 var helpers = require('../../Utils/helpers');
-var OwnerProfile = require('./OwnerProfile');
+var OwnerList = require('./OwnerList');
 
 var {
   View,
@@ -17,10 +17,8 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
-  bigger: {
-    marginTop:37
-  },
   container: {
+    paddingTop: 55,
     flex: 1,
     backgroundColor: '#fffbf8',
   },
@@ -50,10 +48,8 @@ var Owners = React.createClass({
 
   renderRow: function(rowData) {
     return (
-      <View style={styles.container}>
-        <OwnerProfile picUrl={rowData.pets.picURL} firstname={rowData.firstname}
-          lastname={rowData.lastname} name={rowData.pets.name} description={rowData.pets.description} phone={rowData.phone}
-          email={rowData.email} species={rowData.pets.species}/>
+      <View>
+        <OwnerList userData={rowData} navigatorProp={this.props.navigatorProp}/>
       </View>
     )
   },
@@ -63,13 +59,13 @@ var Owners = React.createClass({
           renderRow={this.renderRow} />)
 
     return (
-      <View style={styles.bigger}>
+
         <View style={styles.container}>
-          <ScrollView>
+         
               {listData}
-          </ScrollView>
+        
         </View>
-      </View>
+
     )
   }
 
