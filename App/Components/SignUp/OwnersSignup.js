@@ -9,30 +9,28 @@ var {
   StyleSheet,
   TouchableHighlight, 
   ListView,
-  ActivityIndicatorIOS
+  ActivityIndicatorIOS,
+  ScrollView
 } = React;
 
 var styles = StyleSheet.create({
-  container: {
+container: {
     flex: 1,
     alignItems: 'center',
-    flexDirection: 'column',
-    backgroundColor: '#8d63b4'
+    flexDirection: 'column'
   },
   main: {
-    color: '#fff',
+    color: 'black',
+    alignItems: 'center',
     flexDirection: 'row',
-    margin: 20,
-    marginTop: 20
   },
   input: {
-    marginTop: 20,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    marginTop: 10,
+    backgroundColor: 'rgba(0,0,0,0.05)',
     height:35,
     width:280,
     alignSelf: 'center',
     flexDirection: 'row',
-    opacity:0.3,
     borderRadius: 2,
     textAlign: 'left',
     paddingLeft: 10,
@@ -49,13 +47,14 @@ var styles = StyleSheet.create({
     color: '#fff'
   },
   button: {
-    backgroundColor: '#725794',
+    marginTop: 17,
+    backgroundColor: '#34495e',
     width: 125
   },
   buttonText: {
     textAlign: 'center',
     fontSize: 13,
-    margin: 4,
+    margin: 6,
     color: 'white'
   }
 });
@@ -138,55 +137,56 @@ class OwnerSignup extends React.Component{
       this.state.error ? <Text> {this.state.error} </Text> : <View></View>
     );
     return (
+        <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.main}>Sign Up as a Owner!</Text>
+        <Text style={styles.main}>Sign Up as an Owner!</Text>
         {showErr}
 
         <TextInput style={styles.input} 
           placeholder='First Name'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(firstname) => this.setState({firstname})}
           value={this.state.firstname} />
 
         <TextInput style={styles.input} 
           placeholder='Last Name'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(lastname) => this.setState({lastname})}
           value={this.state.lastname} />
 
         <TextInput style={styles.input} 
           placeholder='Email'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(email) => this.setState({email})}
           value={this.state.email} /> 
 
         <TextInput style={styles.input}
           placeholder='Pets Name'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(name) => this.setState({name})}
           value={this.state.name} /> 
 
         <TextInput style={styles.input} 
           placeholder='Phone Number'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(phone) => this.setState({phone})}
           value={this.state.phone} /> 
 
         <TextInput style={styles.input}
           placeholder='A description of your pet'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(description) => this.setState({description})}
           value={this.state.description} /> 
 
         <TextInput style={styles.input} 
           placeholder='What kind of animal is your pet?'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(species) => this.setState({species})}
           value={this.state.species} /> 
 
         <TextInput style={styles.input} 
           placeholder='A URL to your pets picture'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(picURL) => this.setState({picURL})}
           value={this.state.picURL} /> 
 
@@ -203,6 +203,7 @@ class OwnerSignup extends React.Component{
           size='large'></ActivityIndicatorIOS>
 
       </View>
+        </ScrollView>
     );
   }
 }

@@ -14,23 +14,20 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    flexDirection: 'column',
-    backgroundColor: '#8d63b4'
+    flexDirection: 'column'
   },
   main: {
-    color: '#fff',
-    flexDirection: 'row',
-    margin: 20,
-    marginTop: 20
+    color: 'black',
+    flexDirection: 'row', 
+    paddingTop: 20
   },
   input: {
-    marginTop: 20,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    marginTop: 10,
+    backgroundColor: 'rgba(0,0,0,0.05)',
     height:35,
     width:280,
     alignSelf: 'center',
     flexDirection: 'row',
-    opacity:0.3,
     borderRadius: 2,
     textAlign: 'left',
     paddingLeft: 10,
@@ -47,13 +44,14 @@ var styles = StyleSheet.create({
     color: '#fff'
   },
   button: {
-    backgroundColor: '#725794',
+    marginTop: 17,
+    backgroundColor: '#34495e',
     width: 125
   },
   buttonText: {
     textAlign: 'center',
     fontSize: 13,
-    margin: 4,
+    margin: 6,
     color: 'white'
   }
 });
@@ -126,43 +124,43 @@ class SitterSignup extends React.Component{
 
         <TextInput style={styles.input} 
           placeholder='First Name'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(firstname) => this.setState({firstname})}
           value={this.state.firstname} />
 
         <TextInput style={styles.input} 
           placeholder='Last Name'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(lastname) => this.setState({lastname})}
           value={this.state.lastname} />
 
         <TextInput style={styles.input} 
           placeholder='Email'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(email) => this.setState({email})}
           value={this.state.email} /> 
 
         <TextInput style={styles.input} 
-          placeholder='Adress'
-          placeholderTextColor='white'
+          placeholder='Address'
+          placeholderTextColor='#34495e'
           onChangeText={(address) => this.setState({address})}
           value={this.state.address} /> 
 
         <TextInput style={styles.input} 
           placeholder='Phone Number'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(phone) => this.setState({phone})}
           value={this.state.phone} /> 
 
         <TextInput style={styles.input} 
           placeholder='A description of your pet'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(description) => this.setState({description})}
           value={this.state.description} /> 
 
         <TextInput style={styles.input} 
           placeholder='A URL to your pets picture'
-          placeholderTextColor='white'
+          placeholderTextColor='#34495e'
           onChangeText={(picURL) => this.setState({picURL})}
           value={this.state.picURL} /> 
 
