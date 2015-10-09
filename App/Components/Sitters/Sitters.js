@@ -1,7 +1,7 @@
 var React = require('react-native');
 var Firebase = require('firebase');
 var helpers = require('../../Utils/helpers');
-var SitterProfile = require('./SitterProfile');
+var SitterList = require('./SitterList');
 
 var {
   View,
@@ -51,10 +51,7 @@ var Sitters = React.createClass({
   renderRow: function(rowData) {
     return (
         <View style={styles.container}>
-          <SitterProfile picUrl={rowData.picURL} firstname={rowData.firstname}
-             lastname={rowData.lastname} description={rowData.description}
-             phone={rowData.phone} email={rowData.email} address={rowData.address}
-             preference={rowData.preference}/>
+          <SitterList userData={rowData} navigatorProp={this.props.navigatorProp}/>
         </View>
     )
   },
