@@ -70,11 +70,11 @@ class Signup extends React.Component{
   render() {
 
     var showSitter = (
-      this.state.sitterOnClick ? <SitterForm /> : <View></View>
+      this.state.sitterOnClick ? <SitterForm navigatorProp={this.props.navigatorProp} /> : <View></View>
     );
 
     var showOwner = (
-      this.state.ownerOnClick ? <OwnerForm /> : <View></View>
+      this.state.ownerOnClick ? <OwnerForm navigatorProp={this.props.navigatorProp} /> : <View></View>
     );
 
     return (

@@ -1,5 +1,6 @@
 var React = require('react-native');
 var api = require('./api');
+var Sitters = require('../Sitters/Sitters');
 
 var {
   View,
@@ -101,11 +102,11 @@ class SitterSignup extends React.Component{
             isLoading: false,
           });
 
-          // this.props.navigator.push({
-          //   component: Owners,
-          //   title: 'Pet Watch',
-          // });
-          // console.log('made it!', data);
+          this.props.navigatorProp.push({
+            component: Sitters,
+            title: 'Pet Watch',
+          });
+          console.log('made it!', data);
         })
         .catch((error) => {
           this.setState({
@@ -153,13 +154,13 @@ class SitterSignup extends React.Component{
           value={this.state.phone} /> 
 
         <TextInput style={styles.input} 
-          placeholder='A description of your pet'
+          placeholder='A description about yourself'
           placeholderTextColor='#34495e'
           onChangeText={(description) => this.setState({description})}
           value={this.state.description} /> 
 
         <TextInput style={styles.input} 
-          placeholder='A URL to your pets picture'
+          placeholder='A URL to your profile picture'
           placeholderTextColor='#34495e'
           onChangeText={(picURL) => this.setState({picURL})}
           value={this.state.picURL} /> 
