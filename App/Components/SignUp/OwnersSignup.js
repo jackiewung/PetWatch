@@ -108,7 +108,7 @@ class OwnerSignup extends React.Component{
       }
     }
     console.log(allFieldsComplete, "this is the check");
-    if(false){
+    if(allFieldsComplete){
       api.postOwner(ownerData)
         .then((data) => {
           this.setState({
@@ -136,6 +136,7 @@ class OwnerSignup extends React.Component{
     return (
       <View style={styles.container}>
         <Text style={styles.main}>Sign Up as a Owner!</Text>
+        {showErr}
 
         <TextInput style={styles.input} 
           placeholder='First Name'
@@ -155,44 +156,48 @@ class OwnerSignup extends React.Component{
           onChangeText={(email) => this.setState({email})}
           value={this.state.email} /> 
 
-        <TextInput style={styles.input} 
+        <TextInput style={styles.input}
           placeholder='Pets Name'
           placeholderTextColor='white'
           onChangeText={(name) => this.setState({name})}
           value={this.state.name} /> 
 
-          <TextInput style={styles.input} 
+        <TextInput style={styles.input} 
           placeholder='Phone Number'
           placeholderTextColor='white'
           onChangeText={(phone) => this.setState({phone})}
           value={this.state.phone} /> 
 
-          <TextInput style={styles.input} 
+        <TextInput style={styles.input}
           placeholder='A description of your pet'
           placeholderTextColor='white'
           onChangeText={(description) => this.setState({description})}
           value={this.state.description} /> 
 
-          <TextInput style={styles.input} 
+        <TextInput style={styles.input} 
           placeholder='What kind of animal is your pet?'
           placeholderTextColor='white'
           onChangeText={(species) => this.setState({species})}
           value={this.state.species} /> 
 
-          <TextInput style={styles.input} 
+        <TextInput style={styles.input} 
           placeholder='A URL to your pets picture'
           placeholderTextColor='white'
           onChangeText={(picURL) => this.setState({picURL})}
           value={this.state.picURL} /> 
 
-          <TouchableHighlight 
-            style={styles.button}
-            onPress={this.handleChange.bind(this)}
-            underlayColor='transparent'>
-            <Text style={styles.buttonText}>SIGN UP</Text>
-          </TouchableHighlight>
+        <TouchableHighlight 
+          style={styles.button}
+          onPress={this.handleChange.bind(this)}
+          underlayColor='transparent'>
+          <Text style={styles.buttonText}>SIGN UP</Text>
+        </TouchableHighlight>
 
-          {showErr}
+        <ActivityIndicatorIOS 
+          animating={this.state.isLoading}
+          color='#111'
+          size='large'></ActivityIndicatorIOS>
+
       </View>
     );
   }
