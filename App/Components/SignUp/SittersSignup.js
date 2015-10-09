@@ -73,25 +73,48 @@ class SitterSignup extends React.Component{
   }
 
   handleChange(){
-    console.log('it was clicked!', this);
-
     var sitterData = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      address: '',
-      phone: '',
-      description: '',
-      picURL: ''
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      email: this.state.email,
+      address: this.state.address,
+      phone: this.state.phone,
+      description: this.state.description,
+      picURL: this.state.picURL
     };
 
-    api.postSitter(sitterData)
-      .then((data) => {
-        console.log('made it!', data);
-      })
-      .catch((error) => {
-        console.log('Request failed', error);
-      });
+    // check if fields are passing
+    var allFieldsComplete = true;
+    for(var key in sitterData){
+      console.log(allFieldsComplete, sitterData[key]);
+      // check the pets object!
+      if(sitterData[key] === null){
+        allFieldsComplete = false;
+        console.log(allFieldsComplete, sitterData[key]);
+      }
+    }
+    // if they all pass do api call
+    if(allFieldsComplete){
+      api.postSitter(sitterData)
+        .then((data) => {
+          this.setState({
+            isLoading: false,
+          });
+
+          // this.props.navigator.push({
+          //   component: Owners,
+          //   title: 'Pet Watch',
+          // });
+          // console.log('made it!', data);
+        })
+        .catch((error) => {
+          this.setState({
+            isLoading: false,
+            error: 'Please fill in all info.'
+          });
+          console.log('Request failed', error);
+        });
+    }
   }
 
   render(){
@@ -123,25 +146,25 @@ class SitterSignup extends React.Component{
           onChangeText={(address) => this.setState({address})}
           value={this.state.address} /> 
 
-          <TextInput style={styles.input} 
+        <TextInput style={styles.input} 
           placeholder='Phone Number'
           placeholderTextColor='#34495e'
           onChangeText={(phone) => this.setState({phone})}
           value={this.state.phone} /> 
 
-          <TextInput style={styles.input} 
+        <TextInput style={styles.input} 
           placeholder='A description of your pet'
           placeholderTextColor='#34495e'
           onChangeText={(description) => this.setState({description})}
           value={this.state.description} /> 
 
-          <TextInput style={styles.input} 
+        <TextInput style={styles.input} 
           placeholder='A URL to your pets picture'
           placeholderTextColor='#34495e'
           onChangeText={(picURL) => this.setState({picURL})}
           value={this.state.picURL} /> 
 
-          <TouchableHighlight 
+        <TouchableHighlight 
             style={styles.button}
             onPress={this.handleChange.bind(this)}
             underlayColor='transparent'>
@@ -154,4 +177,3 @@ class SitterSignup extends React.Component{
 }
 
 module.exports = SitterSignup;
-

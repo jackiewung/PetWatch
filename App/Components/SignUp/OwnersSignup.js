@@ -1,5 +1,6 @@
 var React = require('react-native');
 var api = require('./api');
+var Owners = require('../Owners/Owners');
 
 var {
   View,
@@ -113,7 +114,12 @@ class OwnerSignup extends React.Component{
           this.setState({
             isLoading: false,
           });
-          console.log('made it!', data);
+
+          // this.props.navigator.push({
+          //   component: Owners,
+          //   title: 'Pet Watch',
+          // });
+          // console.log('made it!', data);
         })
         .catch((error) => {
           this.setState({
@@ -123,8 +129,6 @@ class OwnerSignup extends React.Component{
           console.log('Request failed', error);
         });
     }
-    // add page change on success
-
   }
 
   render(){
