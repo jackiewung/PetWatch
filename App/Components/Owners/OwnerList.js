@@ -1,8 +1,8 @@
 var React = require('react-native');
 var Separator = require('../../Utils/Separator');
-var SitterProfile = require('./SitterProfile');
+var OwnerProfile = require('./OwnerProfile');
 
-var { View, Text, Image, StyleSheet, NavigatorIOS, TouchableHighlight, navigator } = React;
+var { View, Text, Image, StyleSheet, TouchableHighlight, NavigatorIOS } = React;
 
 var styles = StyleSheet.create({
   container: {
@@ -42,13 +42,13 @@ var styles = StyleSheet.create({
   }
 });
 
-var SitterList = React.createClass({
+var OwnerList = React.createClass({
   goToProfile: function(event) {
     console.log(this.props.navigatorProp, ' in sitterlist')
     console.log(this.props.userData, 'is event')
     this.props.navigatorProp.push({
       title: (this.props.userData.firstname + ' ' + this.props.userData.lastname),
-      component: SitterProfile,
+      component: OwnerProfile,
       passProps: {userData: this.props.userData}
     })
   },
@@ -59,19 +59,20 @@ var SitterList = React.createClass({
         <TouchableHighlight onPress={this.goToProfile}
             underlayColor='transparent'>
           <View style={styles.container}>
-              <Image source={{uri: this.props.userData.picURL}} style={styles.image}/>
-          
-            <View style={styles.paddingText}> 
-              <Text style={styles.petName}>{this.props.userData.firstname}</Text>
-              <Text style={styles.petSpecies}>{this.props.userData.preference}</Text>
-            </View>
-            <Image source={require('image!arrowRight')} style={styles.arrow}/>
+            <Image source={{uri: this.props.userData.pets.picURL}} style={styles.image}/>
+            
+          <View style={styles.paddingText}> 
+            <Text style={styles.petName}>{this.props.userData.pets.name}</Text>
+            <Text style={styles.petSpecies}>{this.props.userData.pets.species}</Text>
+          </View>
+          <Image source={require('image!arrowRight')} style={styles.arrow}/>
           </View>
         </TouchableHighlight>
-         <Separator/>
+        <Separator/>
       </View>
     )
   }
 });
 
-module.exports = SitterList;
+
+module.exports = OwnerList;

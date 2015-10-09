@@ -17,10 +17,8 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
-  bigger: {
-    marginTop:37
-  },
   container: {
+    paddingTop: 43,
     flex: 1,
     backgroundColor: '#fffbf8',
   },
@@ -50,7 +48,7 @@ var Sitters = React.createClass({
 
   renderRow: function(rowData) {
     return (
-        <View style={styles.container}>
+        <View>
           <SitterList userData={rowData} navigatorProp={this.props.navigatorProp}/>
         </View>
     )
@@ -62,13 +60,9 @@ var Sitters = React.createClass({
           renderRow={this.renderRow} />)
 
     return (
-      <View style={styles.bigger}>
         <View style={styles.container}>
-          <ScrollView>
               {listData}
-          </ScrollView>
         </View>
-      </View>
     )
   }
 

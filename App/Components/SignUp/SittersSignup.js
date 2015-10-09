@@ -20,7 +20,7 @@ var styles = StyleSheet.create({
   main: {
     color: 'black',
     flexDirection: 'row', 
-    paddingTop: 20
+    margin: 20
   },
   input: {
     marginTop: 10,

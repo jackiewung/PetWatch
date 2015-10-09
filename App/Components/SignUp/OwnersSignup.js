@@ -23,6 +23,7 @@ container: {
     color: 'black',
     alignItems: 'center',
     flexDirection: 'row',
+    margin: 20
   },
   input: {
     marginTop: 10,
@@ -137,7 +138,6 @@ class OwnerSignup extends React.Component{
       this.state.error ? <Text> {this.state.error} </Text> : <View></View>
     );
     return (
-        <ScrollView>
       <View style={styles.container}>
         <Text style={styles.main}>Sign Up as an Owner!</Text>
         {showErr}
@@ -203,7 +203,6 @@ class OwnerSignup extends React.Component{
           size='large'></ActivityIndicatorIOS>
 
       </View>
-        </ScrollView>
     );
   }
 }
