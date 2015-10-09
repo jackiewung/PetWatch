@@ -115,11 +115,11 @@ class OwnerSignup extends React.Component{
             isLoading: false,
           });
 
-          // this.props.navigator.push({
-          //   component: Owners,
-          //   title: 'Pet Watch',
-          // });
-          // console.log('made it!', data);
+          this.props.navigatorProp.push({
+            component: Owners,
+            title: 'Pet Watch',
+          });
+          console.log('made it!', data);
         })
         .catch((error) => {
           this.setState({
