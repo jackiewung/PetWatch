@@ -1,4 +1,5 @@
 var React = require('react-native');
+var api = require('./api');
 
 var {
   View,
@@ -6,7 +7,8 @@ var {
   TextInput,
   StyleSheet,
   TouchableHighlight, 
-  ListView
+  ListView,
+  ActivityIndicatorIOS
 } = React;
 
 var styles = StyleSheet.create({
@@ -58,27 +60,79 @@ var styles = StyleSheet.create({
 });
 
 class OwnerSignup extends React.Component{
-  
+
   constructor(props){
     super(props)
     
     this.state = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      name: '',
-      phone: '',
-      description: '',
-      species: '',
-      picURL: ''
+      firstname: null,
+      lastname: null,
+      email: null,
+      name: null,
+      phone: null,
+      description: null,
+      species: null,
+      picURL: null,
+      isLoading: false,
+      error: false
     }
   }
 
   handleChange(){
-    console.log('it was clicked!', this);
+    console.log('it was clicked!', this.state.firstname);
+    this.setState({
+      isLoading: true,
+    });
+
+    var ownerData = {
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      phone: this.state.phone,
+      email: this.state.email,
+      pets: {
+        name: this.state.name,
+        description: this.state.description,
+        picURL: this.state.picURL,
+        species: this.state.species
+      }
+    };
+
+    // check if fields are passing
+    var allFieldsComplete = true;
+    for(var key in ownerData){
+      console.log(allFieldsComplete, ownerData[key]);
+      // check the pets object!
+      if(ownerData[key] === null){
+        allFieldsComplete = false;
+        console.log(allFieldsComplete, ownerData[key]);
+      }
+    }
+    console.log(allFieldsComplete, "this is the check");
+    if(false){
+      api.postOwner(ownerData)
+        .then((data) => {
+          this.setState({
+            isLoading: false,
+          });
+          console.log('made it!', data);
+        })
+        .catch((error) => {
+          this.setState({
+            isLoading: false,
+            error: 'Please fill in all info.'
+          });
+          console.log('Request failed', error);
+        });
+    }
+    // add page change on success
+
   }
 
   render(){
+
+    var showErr = (
+      this.state.error ? <Text> {this.state.error} </Text> : <View></View>
+    );
     return (
       <View style={styles.container}>
         <Text style={styles.main}>Sign Up as a Owner!</Text>
@@ -138,14 +192,10 @@ class OwnerSignup extends React.Component{
             <Text style={styles.buttonText}>SIGN UP</Text>
           </TouchableHighlight>
 
+          {showErr}
       </View>
     );
   }
 }
 
 module.exports = OwnerSignup;
-
-
-
-
-

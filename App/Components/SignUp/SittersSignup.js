@@ -1,4 +1,5 @@
 var React = require('react-native');
+var api = require('./api');
 
 var {
   View,
@@ -75,6 +76,24 @@ class SitterSignup extends React.Component{
 
   handleChange(){
     console.log('it was clicked!', this);
+
+    var sitterData = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      address: '',
+      phone: '',
+      description: '',
+      picURL: ''
+    };
+
+    api.postSitter(sitterData)
+      .then((data) => {
+        console.log('made it!', data);
+      })
+      .catch((error) => {
+        console.log('Request failed', error);
+      });
   }
 
   render(){
