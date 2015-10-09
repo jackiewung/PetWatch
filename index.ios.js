@@ -14,15 +14,18 @@ var {
   View,
   TextInput,
   TouchableHighlight,
-  NavigatorIOS
+  NavigatorIOS,
+  navigator
 } = React;
 
 var testingProject = React.createClass({
 
   render: function() {
     return (
-     <NavigatorIOS
+    <NavigatorIOS
      style={{flex: 1}}
+     barTintColor='#2ecc71'
+     titleTextColor='white'
       initialRoute={{
         title:'PetWatch',
         component: TabBar
@@ -30,7 +33,5 @@ var testingProject = React.createClass({
     );
   }
 });
-
-
 
 AppRegistry.registerComponent('testingProject', () => testingProject);

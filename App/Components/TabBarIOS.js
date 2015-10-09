@@ -51,6 +51,7 @@ var styles = StyleSheet.create({
 var TabBar = React.createClass({
 
   getInitialState: function() {
+    console.log(this.props.navigator, 'is navigator')
     return {
       selectedTab: 'Owners'
     }
@@ -58,8 +59,9 @@ var TabBar = React.createClass({
 
   render: function() {
     return (
+
       <TabBarIOS 
-        barTintColor='black'
+        barTintColor='#2c3e50'
         tintColor='white'
         selectedTab={this.state.selectedTab}>
 
@@ -72,7 +74,7 @@ var TabBar = React.createClass({
               selectedTab: 'Owners'
             });
           }}>
-          <Owners/>
+          <Owners navigatorProp={this.props.navigator}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -84,7 +86,7 @@ var TabBar = React.createClass({
               selectedTab: 'true'
             });
           }}>
-          <Sitters/>
+          <Sitters navigatorProp={this.props.navigator}/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
@@ -96,7 +98,7 @@ var TabBar = React.createClass({
               selectedTab: 'false'
             });
           }}>
-          <Signup/>
+          <Signup navigatorProp={this.props.navigator}/>
         </TabBarIOS.Item>
 
       </TabBarIOS>

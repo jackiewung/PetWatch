@@ -37,7 +37,8 @@ var styles = StyleSheet.create({
     height:30,
     width:30,
     margin: 20,
-    justifyContent: 'flex-end'
+    position: 'absolute',
+    right: 30
   }
 });
 
@@ -60,14 +61,5 @@ var OwnerProfile = React.createClass({
   }
 });
 
-OwnerProfile.propTypes = {
-  picUrl: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  description: React.PropTypes.string.isRequired,
-  firstname: React.PropTypes.string.isRequired,
-  lastname: React.PropTypes.string.isRequired,
-  phone: React.PropTypes.string.isRequired,
-  email: React.PropTypes.string.isRequired
-}
 
 module.exports = OwnerProfile;

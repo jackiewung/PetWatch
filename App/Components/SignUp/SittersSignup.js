@@ -157,7 +157,3 @@ class SitterSignup extends React.Component{
 
 module.exports = SitterSignup;
 
-
-
-
-
