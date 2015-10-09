@@ -1,5 +1,3 @@
-var Firebase = require('firebase');
-var React = require('react-native');
 
 var helpers = {
   getOwners() {

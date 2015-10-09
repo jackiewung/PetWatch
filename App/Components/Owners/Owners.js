@@ -17,17 +17,15 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
+  bigger: {
+    marginTop:37
+  },
   container: {
     flex: 1,
-    backgroundColor: '#8d63b4'
+    backgroundColor: '#fffbf8',
   },
-  main: {
-    flex: 1,
-    color: '#fff',
-    flexDirection: 'column'
-  },
-  scroll :{
-   
+  scroll: {
+    flex: 1
   }
 });
 
@@ -65,10 +63,12 @@ var Owners = React.createClass({
           renderRow={this.renderRow} />)
 
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.scroll}>
-            {listData}
-        </ScrollView>
+      <View style={styles.bigger}>
+        <View style={styles.container}>
+          <ScrollView>
+              {listData}
+          </ScrollView>
+        </View>
       </View>
     )
   }

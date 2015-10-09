@@ -17,17 +17,15 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    backgroundColor: '#8d63b4'
+  bigger: {
+    marginTop:37
   },
-  main: {
+  container: {
     flex: 1,
-    color: '#fff',
-    flexDirection: 'column'
+    backgroundColor: '#fffbf8',
+  },
+  scroll: {
+    flex: 1
   }
 });
 
@@ -52,11 +50,12 @@ var Sitters = React.createClass({
 
   renderRow: function(rowData) {
     return (
-      <View style={styles.container}>
-        <SitterProfile picURL={rowData.picURL} firstname={rowData.firstname}
-           lastname={rowData.lastname} description={rowData.description}
-           phone={rowData.phone} email={rowData.email} address={rowData.address}/>
-      </View>
+        <View style={styles.container}>
+          <SitterProfile picUrl={rowData.picURL} firstname={rowData.firstname}
+             lastname={rowData.lastname} description={rowData.description}
+             phone={rowData.phone} email={rowData.email} address={rowData.address}
+             preference={rowData.preference}/>
+        </View>
     )
   },
 
@@ -66,10 +65,12 @@ var Sitters = React.createClass({
           renderRow={this.renderRow} />)
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
-            {listData}
-        </ScrollView>
+      <View style={styles.bigger}>
+        <View style={styles.container}>
+          <ScrollView>
+              {listData}
+          </ScrollView>
+        </View>
       </View>
     )
   }
