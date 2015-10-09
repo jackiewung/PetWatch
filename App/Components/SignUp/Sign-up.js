@@ -1,6 +1,6 @@
 var React = require('react-native');
-var OwnerForm = require('./SittersSignup');
-var SitterForm = require('./OwnersSignup');
+var SitterForm = require('./SittersSignup');
+var OwnerForm = require('./OwnersSignup');
 
 var {
   Text,
@@ -56,6 +56,7 @@ class Signup extends React.Component{
         ownerOnClick: false
       })
     } else if ('owner' === button) {
+      console.log('owner');
       this.setState({
         sitterOnClick: false,
         ownerOnClick: true
