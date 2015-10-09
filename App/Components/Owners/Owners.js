@@ -17,17 +17,15 @@ var {
 } = React;
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    backgroundColor: '#8d63b4'
+  bigger: {
+    marginTop:37
   },
-  main: {
+  container: {
     flex: 1,
-    color: '#fff',
-    flexDirection: 'column'
+    backgroundColor: '#fffbf8',
+  },
+  scroll: {
+    flex: 1
   }
 });
 
@@ -50,30 +48,27 @@ var Owners = React.createClass({
       })
   },
 
-  componentWillUpdate: function(nextProps, nextState) {
-    console.log('will update', nextState.dataSource)
-  },
-
   renderRow: function(rowData) {
     return (
       <View style={styles.container}>
         <OwnerProfile picUrl={rowData.pets.picURL} firstname={rowData.firstname}
           lastname={rowData.lastname} name={rowData.pets.name} description={rowData.pets.description} phone={rowData.phone}
-          email={rowData.email}/>
+          email={rowData.email} species={rowData.pets.species}/>
       </View>
     )
   },
 
   render: function() {
-    console.log(this.state.dataSource, 'hey render')
     var listData= this.state.dataSource === '' ?  null : (<ListView dataSource={this.state.dataSource} 
           renderRow={this.renderRow} />)
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
-            {listData}
-        </ScrollView>
+      <View style={styles.bigger}>
+        <View style={styles.container}>
+          <ScrollView>
+              {listData}
+          </ScrollView>
+        </View>
       </View>
     )
   }

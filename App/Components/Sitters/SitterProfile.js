@@ -41,7 +41,7 @@ var styles = StyleSheet.create({
   }
 });
 
-var OwnerProfile = React.createClass({
+var SitterProfile = React.createClass({
   render: function(){
     return (
       <View>
@@ -49,8 +49,8 @@ var OwnerProfile = React.createClass({
           <Image source={{uri: this.props.picUrl}} style={styles.image}/>
           
         <View style={styles.paddingText}> 
-          <Text style={styles.petName}>{this.props.name}</Text>
-          <Text style={styles.petSpecies}>{this.props.species}</Text>
+          <Text style={styles.petName}>{this.props.firstname}</Text>
+          <Text style={styles.petSpecies}>{this.props.preference}</Text>
         </View>
         <Image source={require('image!arrowRight')} style={styles.arrow}/>
         </View>
@@ -60,14 +60,4 @@ var OwnerProfile = React.createClass({
   }
 });
 
-OwnerProfile.propTypes = {
-  picUrl: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  description: React.PropTypes.string.isRequired,
-  firstname: React.PropTypes.string.isRequired,
-  lastname: React.PropTypes.string.isRequired,
-  phone: React.PropTypes.string.isRequired,
-  email: React.PropTypes.string.isRequired
-}
-
-module.exports = OwnerProfile;
+module.exports = SitterProfile;

@@ -14,14 +14,19 @@ var {
   View,
   TextInput,
   TouchableHighlight,
-  NavigatorIOS,
+  NavigatorIOS
 } = React;
 
 var testingProject = React.createClass({
 
   render: function() {
     return (
-     <TabBar />
+     <NavigatorIOS
+     style={{flex: 1}}
+      initialRoute={{
+        title:'PetWatch',
+        component: TabBar
+      }} />
     );
   }
 });
