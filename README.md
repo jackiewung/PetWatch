@@ -28,5 +28,6 @@
 
 ```
 npm install
+npm start
 ```
 You must download xCode to run the program, and import the ios folder.
