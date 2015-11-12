@@ -17,7 +17,7 @@
 
 ## Usage
 
-> This iOS mobile application brings together owners and babysitters in a craigslist style format.
+> This iOS mobile application brings together owners and pet sitters in a craigslist style format.
 
 ## Requirements
 
